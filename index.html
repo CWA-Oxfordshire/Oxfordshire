@@ -712,26 +712,51 @@
     .act-card:nth-child(2) .act-hub-name { border-color: var(--mint-dark); }
     .act-card:nth-child(3) .act-hub-name { border-color: var(--black); }
     .act-card:nth-child(4) .act-hub-name { border-color: var(--red-dark); }
-    .act-item {
-      margin-bottom: 12px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--grey-mid);
+
+    /* Social media cards */
+    .social-intro {
+      font-size: 12px;
+      color: var(--grey-text);
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
-    .act-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .act-tag {
-      display: inline-block;
-      font-size: 9px;
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 11px 14px;
+      border-radius: 4px;
+      font-size: 12px;
       font-weight: bold;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 2px 7px;
-      margin-bottom: 5px;
+      text-decoration: none;
+      transition: opacity 0.15s, transform 0.1s;
+      line-height: 1.3;
     }
-    .act-tag.rides     { background: var(--mint);     color: var(--black); }
-    .act-tag.fundraise { background: var(--red);      color: var(--white); }
-    .act-tag.event     { background: var(--black);    color: var(--white); }
-    .act-tag.news      { background: var(--grey-mid); color: var(--black); }
-    .act-text { font-size: 12px; color: var(--grey-text); line-height: 1.5; }
+    .social-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+    .social-btn svg {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+    }
+    .social-btn-text { display: flex; flex-direction: column; }
+    .social-btn-label { font-size: 9px; font-weight: bold; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.75; }
+    .social-btn-handle { font-size: 13px; font-weight: bold; }
+
+    /* Instagram gradient button */
+    .social-btn.instagram {
+      background: linear-gradient(135deg, #f58529 0%, #dd2a7b 50%, #8134af 100%);
+      color: #fff;
+    }
+    /* Facebook button */
+    .social-btn.facebook {
+      background: #1877F2;
+      color: #fff;
+    }
 
     /* ══════════════════════════════════════════
        FOOTER
@@ -837,7 +862,7 @@
 
 <!-- TOP BAR -->
 <div class="topbar">
-  <span>Part of <a href="https://cyclingwithoutage.org.uk" target="_blank">Cycling Without Age UK</a> — Charity No. 1182812</span>
+  <span>Part of <a href="https://cyclingwithoutage.org.uk" target="_blank">Cycling Without Age UK</a> — Charity No. 1188400</span>
   <span>Four hubs across Oxfordshire · Free trishaw rides</span>
 </div>
 
@@ -1199,8 +1224,8 @@
         <h3>Not sure which hub covers your area?</h3>
         <p>If you're unsure which hub to contact, or you'd like to speak with someone at county level, contact our county coordinator directly.</p>
       </div>
-      <a href="/cdn-cgi/l/email-protection#a4cdcac2cbe4c7ddc7c8cdcac3d3cdd0cccbd1d0c5c3c189cbdcc2cbd6c0d7cccdd6c18acbd6c38ad1cf" class="btn btn-outline-white">
-        Email county coordinator <span class="pnote" style="color:rgba(255,255,255,0.6);border-color:rgba(255,255,255,0.3);">confirm</span>
+      <a href="mailto:kiran.audit@cyclingwithoutage.org.uk" class="btn btn-outline-white">
+        Email county coordinator
       </a>
     </div>
   </div>
@@ -1274,7 +1299,7 @@
             UK taxpayer? <a href="https://forms.gle/6nDJR99KbaV7f9pN9" target="_blank">Complete a Gift Aid declaration</a> after donating — adds 25% free.
           </div>
           <p class="donate-note">
-            Cycling Without Age Oxfordshire · <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Registered Charity 1182812</a>
+            Cycling Without Age Oxfordshire · <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Registered Charity 1188400</a>
           </p>
         </div>
       </div>
@@ -1286,71 +1311,100 @@
 <section class="activities-section">
   <div class="container">
     <div class="section-header">
-      <div class="overline">What's happening</div>
-      <h2>Hub activities &amp; fundraising</h2>
-      <p>Each hub runs its own programme of rides, events and fundraising. Here's what's on across Oxfordshire.</p>
+      <div class="overline">Follow our hubs</div>
+      <h2>Find us on social media</h2>
+      <p>Each hub shares rides, news and community updates on Instagram and Facebook. Follow your local hub to stay connected.</p>
     </div>
     <div class="activities-grid">
+
+      <!-- Central Oxford & Kennington -->
       <div class="act-card">
         <div class="act-hub-name">Central Oxford &amp; Kennington</div>
-        <div class="act-item">
-          <span class="act-tag rides">Rides</span>
-          <div class="act-text">[Current ride schedule — e.g. weekly rides with local care homes, river routes] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag fundraise">Fundraise</span>
-          <div class="act-text">[Upcoming fundraiser — e.g. sponsored ride, Oxford charity event] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag news">News</span>
-          <div class="act-text">[Latest news or achievements] <span class="pnote">update</span></div>
+        <p class="social-intro">Follow us for ride updates, volunteer stories and community news from Oxford and Kennington.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/cyclingwithout.ox/" target="_blank" rel="noopener" class="social-btn instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Instagram</span>
+              <span class="social-btn-handle">@cyclingwithout.ox</span>
+            </span>
+          </a>
+          <a href="https://cyclingwithoutage.org.uk/oxfordshire" target="_blank" rel="noopener" class="social-btn facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Facebook</span>
+              <span class="social-btn-handle">CWA Oxfordshire</span>
+            </span>
+          </a>
         </div>
       </div>
+
+      <!-- Kidlington & Woodstock -->
       <div class="act-card">
         <div class="act-hub-name">Kidlington &amp; Woodstock</div>
-        <div class="act-item">
-          <span class="act-tag rides">Rides</span>
-          <div class="act-text">[Current rides — e.g. Blenheim grounds, village care home visits] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag fundraise">Fundraise</span>
-          <div class="act-text">[Fundraising — e.g. Woodstock fête, quiz night] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag event">Event</span>
-          <div class="act-text">[Community event or awareness activity] <span class="pnote">update</span></div>
+        <p class="social-intro">Stay up to date with rides, volunteer opportunities and care home partnerships in the Kidlington area.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/cyclingwithout.ox/" target="_blank" rel="noopener" class="social-btn instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Instagram</span>
+              <span class="social-btn-handle">@cyclingwithout.ox</span>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/CWAOxfordshire" target="_blank" rel="noopener" class="social-btn facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Facebook</span>
+              <span class="social-btn-handle">CWA Oxfordshire</span>
+            </span>
+          </a>
         </div>
       </div>
+
+      <!-- Wallingford -->
       <div class="act-card">
         <div class="act-hub-name">Wallingford</div>
-        <div class="act-item">
-          <span class="act-tag rides">Rides</span>
-          <div class="act-text">[Thames riverside routes, care home partnerships] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag fundraise">Fundraise</span>
-          <div class="act-text">[Current fundraising — market collections, Rotary support] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag news">News</span>
-          <div class="act-text">[Hub news or milestones] <span class="pnote">update</span></div>
+        <p class="social-intro">Follow the Wallingford Hub for Thames-side ride updates, care home news and community events.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/cyclingwithoutagewallingford/" target="_blank" rel="noopener" class="social-btn instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Instagram</span>
+              <span class="social-btn-handle">@cyclingwithoutagewallingford</span>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/groups/1495609128228832/" target="_blank" rel="noopener" class="social-btn facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Facebook Group</span>
+              <span class="social-btn-handle">Wallingford Hub</span>
+            </span>
+          </a>
         </div>
       </div>
+
+      <!-- Didcot -->
       <div class="act-card">
         <div class="act-hub-name">Didcot</div>
-        <div class="act-item">
-          <span class="act-tag rides">Rides</span>
-          <div class="act-text">[Didcot riverside, East Hagbourne village rides] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag fundraise">Fundraise</span>
-          <div class="act-text">[Local business partnerships, community events] <span class="pnote">update</span></div>
-        </div>
-        <div class="act-item">
-          <span class="act-tag event">Event</span>
-          <div class="act-text">[Upcoming events or campaigns] <span class="pnote">update</span></div>
+        <p class="social-intro">Follow the Didcot Hub as we grow our newest hub — rides, volunteer news and fundraising updates.</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/cycling_without_age_didcot/" target="_blank" rel="noopener" class="social-btn instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Instagram</span>
+              <span class="social-btn-handle">@cycling_without_age_didcot</span>
+            </span>
+          </a>
+          <a href="https://www.facebook.com/groups/891545433219050" target="_blank" rel="noopener" class="social-btn facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            <span class="social-btn-text">
+              <span class="social-btn-label">Facebook Group</span>
+              <span class="social-btn-handle">Didcot Hub</span>
+            </span>
+          </a>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -1390,23 +1444,4 @@
       <ul>
         <li><a href="https://www.paypal.com/gb/fundraiser/charity/3962547" target="_blank">Donate via PayPal</a></li>
         <li><a href="https://cyclingwithoutage.org.uk" target="_blank">CWA UK</a></li>
-        <li><a href="https://cyclingwithoutage.org" target="_blank">CWA Global</a></li>
-        <li><a href="/cdn-cgi/l/email-protection#432a2d252c03203a202f2a2d24342a372b2c36372224266e2c3b252c3127302b2a31266d2c31246d3628">Contact us</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Cycling Without Age Oxfordshire · Charity No. 1182812</span>
-    <span><a href="https://cyclingwithoutage.org.uk" target="_blank">cyclingwithoutage.org.uk</a></span>
-  </div>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-  // ── Slideshow ──────────────────────────────
-  const slides = document.querySelectorAll('.slide');
-  const dots   = document.querySelectorAll('.dot');
-  let current  = 0;
-  let timer;
-
-  function goToSlide(n) {
-    slides[current].class
+        <li><a href="https://cyclingwithoutage.org" target="_bla
