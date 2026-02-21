@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources &amp; Downloads — Cycling Without Age Oxfordshire</title>
+  <style>
+    :root {
+      --red:        #ED1C24;
+      --red-dark:   #C0141A;
+      --mint:       #92D2C6;
+      --mint-dark:  #6BBCB0;
+      --black:      #000000;
+      --white:      #FFFFFF;
+      --grey-light: #F5F5F5;
+      --grey-mid:   #E0E0E0;
+      --grey-text:  #444444;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+      color: var(--black);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      background: var(--black);
+      color: rgba(255,255,255,0.55);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 7px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .topbar a { color: var(--mint); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--black);
+      border-bottom: 3px solid var(--red);
+    }
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo img { height: 36px; width: auto; }
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .nav-links li a {
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.75);
+      transition: color 0.15s;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active { color: var(--white); }
+    .nav-links li a.nav-cta {
+      background: var(--red);
+      color: var(--white);
+      padding: 8px 16px;
+    }
+    .nav-links li a.nav-cta:hover { background: var(--red-dark); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: var(--black);
+      padding: 56px 32px;
+      text-align: center;
+    }
+    .page-hero .overline {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mint);
+      margin-bottom: 12px;
+    }
+    .page-hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .page-hero p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── NOTICE BANNER ── */
+    .notice-bar {
+      background: #FFF8E1;
+      border-bottom: 3px solid #F59E0B;
+      padding: 14px 32px;
+      text-align: center;
+      font-size: 13px;
+      color: #7A5008;
+    }
+    .notice-bar strong { color: #92600A; }
+    .notice-bar a { color: #92600A; font-weight: bold; text-decoration: underline; }
+
+    /* ── SECTION LAYOUT ── */
+    .resources-section {
+      padding: 64px 0;
+    }
+    .resources-section + .resources-section {
+      border-top: 1px solid var(--grey-mid);
+      padding-top: 56px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+    .section-label .label-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .section-label .label-text h2 {
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .section-label .label-text p {
+      font-size: 13px;
+      color: var(--grey-text);
+      margin-top: 3px;
+    }
+
+    /* Colour coding per category */
+    .cat-red    .label-icon { background: var(--red);    color: #fff; }
+    .cat-mint   .label-icon { background: var(--mint);   color: var(--black); }
+    .cat-black  .label-icon { background: var(--black);  color: #fff; }
+    .cat-amber  .label-icon { background: #F59E0B;        color: #fff; }
+    .cat-grey   .label-icon { background: var(--grey-mid); color: var(--black); }
+
+    /* ── DOCUMENT GRID ── */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .doc-card {
+      background: var(--grey-light);
+      border: 1px solid var(--grey-mid);
+      border-radius: 4px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .doc-card:hover {
+      border-color: var(--red);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .doc-card-top {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .doc-icon {
+      font-size: 26px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .doc-info { flex: 1; }
+    .doc-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: var(--black);
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+    .doc-desc {
+      font-size: 12px;
+      color: var(--grey-text);
+      line-height: 1.5;
+    }
+    .doc-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 10px;
+      border-top: 1px solid var(--grey-mid);
+    }
+    .doc-type {
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+    .type-pdf    { background: #FDECEA; color: #B71C1C; }
+    .type-link   { background: #E3F2FD; color: #0D47A1; }
+    .type-form   { background: #E8F5E9; color: #1B5E20; }
+
+    .doc-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1.5px solid var(--red);
+      padding: 5px 12px;
+      border-radius: 2px;
+      transition: background 0.12s, color 0.12s;
+    }
+    .doc-btn:hover {
+      background: var(--red);
+      color: var(--white);
+    }
+    .doc-btn.coming-soon {
+      color: var(--grey-text);
+      border-color: var(--grey-mid);
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* ── EXTERNAL LINKS ROW ── */
+    .ext-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+    }
+    .ext-link-card {
+      border: 1.5px solid var(--grey-mid);
+      border-radius: 4px;
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: border-color 0.15s;
+    }
+    .ext-link-card:hover { border-color: var(--mint-dark); }
+    .ext-link-icon { font-size: 22px; flex-shrink: 0; }
+    .ext-link-text .ext-name {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--black);
+    }
+    .ext-link-text .ext-desc {
+      font-size: 11px;
+      color: var(--grey-text);
+      margin-top: 2px;
+    }
+    .ext-link-arrow {
+      margin-left: auto;
+      font-size: 16px;
+      color: var(--grey-text);
+    }
+
+    /* ── CONTACT STRIP ── */
+    .contact-strip {
+      background: var(--black);
+      color: var(--white);
+      padding: 48px 32px;
+      text-align: center;
+      margin-top: 64px;
+    }
+    .contact-strip h2 {
+      font-size: clamp(18px, 3vw, 28px);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 10px;
+    }
+    .contact-strip p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      max-width: 500px;
+      margin: 0 auto 24px;
+    }
+    .contact-strip a {
+      display: inline-block;
+      background: var(--red);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 14px 28px;
+      transition: background 0.15s;
+    }
+    .contact-strip a:hover { background: var(--red-dark); }
+
+    /* ── FOOTER ── */
+    footer { background: var(--black); color: var(--white); padding: 56px 0 32px; }
+    .footer-slogan {
+      text-align: center;
+      padding: 48px 32px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      margin-bottom: 48px;
+    }
+    .footer-slogan .slogan-line {
+      display: inline-block;
+      background: var(--red);
+      padding: 4px 20px;
+      margin-bottom: 4px;
+    }
+    .footer-slogan .slogan-line span {
+      font-size: clamp(24px, 4vw, 44px);
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 32px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-top: 12px;
+      line-height: 1.65;
+    }
+    .footer-brand img { height: 52px; width: auto; }
+    .footer-col h4 {
+      font-size: 10px;
+      font-weight: bold;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 8px; }
+    .footer-col ul li a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.65);
+      transition: color 0.12s;
+    }
+    .footer-col ul li a:hover { color: var(--mint); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 24px 32px 0;
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .footer-bottom span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.3);
+      letter-spacing: 0.04em;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .doc-grid { grid-template-columns: 1fr; }
+      .ext-links-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <span>Part of <a href="https://cyclingwithoutage.org.uk" target="_blank">Cycling Without Age UK</a> — Charity No. 1188400</span>
+  <span><a href="mailto:kiran.audit@cyclingwithoutage.org.uk">County Coordinator</a></span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="images/logo.png" alt="Cycling Without Age Oxfordshire">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#volunteer">Volunteer</a></li>
+      <li><a href="index.html#rides">Request a Ride</a></li>
+      <li><a href="index.html#hubs">Our Hubs</a></li>
+      <li><a href="index.html#donate">Donate</a></li>
+      <li><a href="resources.html" class="active">Resources</a></li>
+      <li><a href="https://book2go.bike/login" target="_blank" class="nav-cta">Pilot Sign-in →</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="overline">Volunteers &amp; visitors</div>
+  <h1>Resources &amp; Downloads</h1>
+  <p>Policies, forms and guidance for pilots, hub leaders and members of the public. All documents are provided free to download.</p>
+</div>
+
+<!-- NOTICE -->
+<div class="notice-bar">
+  <strong>Hub leaders:</strong> To add or update a document, email <a href="mailto:kiran.audit@cyclingwithoutage.org.uk">kiran.audit@cyclingwithoutage.org.uk</a> with the file and the category it belongs to.
+</div>
+
+<div class="container">
+
+  <!-- ══ 1. SAFEGUARDING ══ -->
+  <section class="resources-section cat-red">
+    <div class="section-label">
+      <div class="label-icon">🛡</div>
+      <div class="label-text">
+        <h2>Safeguarding</h2>
+        <p>Policies and guidance to protect passengers, volunteers and the public.</p>
+      </div>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Safeguarding Policy</div>
+            <div class="doc-desc">CWAO's safeguarding policy covering responsibilities for all volunteers and hub leaders.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/safeguarding-policy.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">DBS Check Guide</div>
+            <div class="doc-desc">Step-by-step guide for new volunteers completing their enhanced DBS check with CWAO.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/dbs-guide.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">🔗</div>
+          <div class="doc-info">
+            <div class="doc-name">DBS Application (External)</div>
+            <div class="doc-desc">Apply for your DBS check online via the Disclosure and Barring Service portal.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-link">External link</span>
+          <a href="https://www.gov.uk/guidance/dbs-check-requests-guidance-for-employers" target="_blank" rel="noopener" class="doc-btn">Open ↗</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Safeguarding Incident Report Form</div>
+            <div class="doc-desc">Use this form to report any safeguarding concern to your hub leader or county coordinator.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/incident-report.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 2. VOLUNTEER RESOURCES ══ -->
+  <section class="resources-section cat-mint">
+    <div class="section-label">
+      <div class="label-icon">🚲</div>
+      <div class="label-text">
+        <h2>Volunteer &amp; Pilot Resources</h2>
+        <p>Training materials, ride guides and operational documents for active pilots.</p>
+      </div>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Trishaw Pilot Manual</div>
+            <div class="doc-desc">Full operating guide covering pre-ride checks, passenger safety, route guidance and emergency procedures.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/trishaw-pilot-manual.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Ride Log QR Code (Printable)</div>
+            <div class="doc-desc">Print and attach to your trishaw. Passengers and pilots can log rides quickly via QR code.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/ride-log-qr.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Pre-Ride Safety Checklist</div>
+            <div class="doc-desc">A quick printable checklist for pilots to complete before each outing.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/pre-ride-checklist.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Volunteer Induction Pack</div>
+            <div class="doc-desc">Welcome pack for new volunteers — what to expect, who to contact and how to get started.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/volunteer-induction.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">🔗</div>
+          <div class="doc-info">
+            <div class="doc-name">Book2Go Volunteer Sign-up</div>
+            <div class="doc-desc">Register as a new pilot on our scheduling platform. Remember to also email your local hub.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-link">External link</span>
+          <a href="https://book2go.bike/signup" target="_blank" rel="noopener" class="doc-btn">Open ↗</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">🔗</div>
+          <div class="doc-info">
+            <div class="doc-name">Book2Go Pilot Sign-in</div>
+            <div class="doc-desc">Existing volunteers — log in here to book and manage your ride slots.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-link">External link</span>
+          <a href="https://book2go.bike/login" target="_blank" rel="noopener" class="doc-btn">Open ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 3. POLICIES & GOVERNANCE ══ -->
+  <section class="resources-section cat-black">
+    <div class="section-label">
+      <div class="label-icon">📋</div>
+      <div class="label-text">
+        <h2>Policies &amp; Governance</h2>
+        <p>Formal charity policies available to volunteers, partners and members of the public.</p>
+      </div>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Privacy Policy</div>
+            <div class="doc-desc">How CWAO collects, uses and protects personal data in compliance with UK GDPR.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/privacy-policy.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Volunteer Code of Conduct</div>
+            <div class="doc-desc">The standards of behaviour expected of all Cycling Without Age Oxfordshire volunteers.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/code-of-conduct.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Equal Opportunities Policy</div>
+            <div class="doc-desc">Our commitment to inclusive, non-discriminatory service and volunteering.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/equal-opportunities.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">🔗</div>
+          <div class="doc-info">
+            <div class="doc-name">Charity Commission Entry</div>
+            <div class="doc-desc">Official Charity Commission register entry for Cycling Without Age Oxfordshire (1188400).</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-link">External link</span>
+          <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank" rel="noopener" class="doc-btn">Open ↗</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 4. FUNDRAISING & DONATIONS ══ -->
+  <section class="resources-section cat-amber">
+    <div class="section-label">
+      <div class="label-icon">💛</div>
+      <div class="label-text">
+        <h2>Fundraising &amp; Donations</h2>
+        <p>Gift Aid, donation forms and fundraising guidance.</p>
+      </div>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">🔗</div>
+          <div class="doc-info">
+            <div class="doc-name">Gift Aid Declaration (Online)</div>
+            <div class="doc-desc">Complete a Gift Aid declaration online to increase the value of your donation at no cost to you.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-link">External link</span>
+          <a href="https://book2go.bike" target="_blank" rel="noopener" class="doc-btn">Open ↗</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Gift Aid Declaration (Printable)</div>
+            <div class="doc-desc">Print and complete a paper Gift Aid form — useful for events and in-person donations.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/gift-aid-declaration.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Fundraising Pack</div>
+            <div class="doc-desc">Guidance, templates and ideas for running your own fundraising event in support of CWAO.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/fundraising-pack.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ 5. CARE HOMES & PARTNERS ══ -->
+  <section class="resources-section cat-grey">
+    <div class="section-label">
+      <div class="label-icon">🏥</div>
+      <div class="label-text">
+        <h2>Care Homes &amp; Referral Partners</h2>
+        <p>Information for GPs, social prescribers, care homes and community organisations.</p>
+      </div>
+    </div>
+    <div class="doc-grid">
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Service Overview for Partners</div>
+            <div class="doc-desc">One-page summary of CWAO for GPs, social prescribers and care home managers.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/partner-overview.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Ride Referral Form</div>
+            <div class="doc-desc">Use this form to refer a resident or patient for a free trishaw ride. Forward to your local hub.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/referral-form.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Partnership Agreement Template</div>
+            <div class="doc-desc">Template MOU for care homes and organisations formalising a regular rides partnership.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/partnership-agreement.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+      <div class="doc-card">
+        <div class="doc-card-top">
+          <div class="doc-icon">📄</div>
+          <div class="doc-info">
+            <div class="doc-name">Social Prescribing Information Sheet</div>
+            <div class="doc-desc">For link workers and health professionals — how trishaw rides support social prescribing goals.</div>
+          </div>
+        </div>
+        <div class="doc-meta">
+          <span class="doc-type type-pdf">PDF</span>
+          <a href="docs/social-prescribing.pdf" download class="doc-btn coming-soon">Coming soon</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div><!-- /container -->
+
+<!-- CONTACT STRIP -->
+<div class="contact-strip">
+  <h2>Can't find what you need?</h2>
+  <p>Contact our county coordinator directly and we'll point you in the right direction or send you the document you need.</p>
+  <a href="mailto:kiran.audit@cyclingwithoutage.org.uk">Email county coordinator</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-slogan">
+    <div class="slogan-line"><span>The right to wind</span></div><br>
+    <div class="slogan-line"><span>in your hair.</span></div>
+  </div>
+
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="images/logo.png" alt="Cycling Without Age Oxfordshire">
+      <p>A volunteer-led not-for-profit charity providing free trishaw rides to elderly, isolated and vulnerable adults across Oxfordshire. Part of the global Cycling Without Age movement.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Get involved</h4>
+      <ul>
+        <li><a href="https://book2go.bike/signup" target="_blank">Volunteer as a pilot</a></li>
+        <li><a href="index.html#rides">Request a ride</a></li>
+        <li><a href="index.html#donate">Make a donation</a></li>
+        <li><a href="https://book2go.bike/login" target="_blank">Pilot sign-in</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our hubs</h4>
+      <ul>
+        <li><a href="mailto:oxford@cyclingwithoutage.org.uk">Central Oxford &amp; Kennington</a></li>
+        <li><a href="mailto:oxford@cyclingwithoutage.org.uk">Kidlington &amp; Woodstock</a></li>
+        <li><a href="mailto:wallingford@cyclingwithoutage.org.uk">Wallingford</a></li>
+        <li><a href="mailto:didcot@cyclingwithoutage.org.uk">Didcot</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="resources.html">Documents &amp; downloads</a></li>
+        <li><a href="mailto:kiran.audit@cyclingwithoutage.org.uk">Contact coordinator</a></li>
+        <li><a href="https://cyclingwithoutage.org.uk" target="_blank">National website</a></li>
+        <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Charity Commission</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Cycling Without Age Oxfordshire &mdash; <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Registered Charity 1188400</a></span>
+    <span>Website by volunteers &mdash; <a href="https://cyclingwithoutage.org.uk" target="_blank">cyclingwithoutage.org.uk</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
