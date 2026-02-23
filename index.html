@@ -289,7 +289,12 @@
     .hub-strip {
       background: var(--black);
       color: var(--white);
-      padding: 14px 32px;
+      border-top: 3px solid var(--mint);
+    }
+    .hub-strip-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 12px 32px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -298,10 +303,33 @@
       font-weight: bold;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      border-top: 3px solid var(--mint);
     }
-    .hub-strip .label { color: var(--mint); flex-shrink: 0; }
-    .hub-strip .sep { color: rgba(255,255,255,0.3); }
+    .hub-strip .label { color: var(--mint); flex-shrink: 0; white-space: nowrap; }
+    .hub-strip .sep { color: rgba(255,255,255,0.25); }
+    .hub-strip .hub-name { white-space: nowrap; color: rgba(255,255,255,0.85); }
+    @media (max-width: 600px) {
+      .hub-strip-inner {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        padding: 0;
+      }
+      .hub-strip .label {
+        grid-column: 1 / -1;
+        padding: 10px 20px 6px;
+        font-size: 10px;
+        color: var(--mint);
+      }
+      .hub-strip .sep { display: none; }
+      .hub-strip .hub-name {
+        padding: 9px 20px;
+        font-size: 11px;
+        border-top: 1px solid rgba(255,255,255,0.07);
+      }
+      .hub-strip .hub-name:nth-child(odd) {
+        border-right: 1px solid rgba(255,255,255,0.07);
+      }
+    }
 
     /* Stat bar */
     .stat-bar { background: var(--red); color: var(--white); }
@@ -904,13 +932,92 @@
       .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
     }
     @media (max-width: 600px) {
+      .topbar { display: none; }
       .activities-grid { grid-template-columns: 1fr; }
       .hub-contacts { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
       .request-cta-bar { flex-direction: column; }
-      .topbar { justify-content: center; text-align: center; }
       .hero { min-height: 320px; }
+    }
+
+    /* ══════════════════════════════════════════
+       MOBILE NAV — Hamburger + drawer
+    ══════════════════════════════════════════ */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: auto;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.25s ease;
+      transform-origin: center;
+    }
+    /* Animate to X when open */
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0;
+      transform: scaleX(0);
+    }
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      display: none;
+      background: #111;
+      border-top: 2px solid var(--red);
+    }
+    .nav-drawer.open { display: block; }
+    .nav-drawer ul {
+      list-style: none;
+      padding: 8px 0 12px;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+    .nav-drawer ul li a {
+      display: block;
+      padding: 13px 24px;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.12s, color 0.12s;
+    }
+    .nav-drawer ul li a:hover {
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+    }
+    .nav-drawer ul li:last-child a {
+      margin: 10px 24px 0;
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      border-bottom: none;
+      padding: 13px 24px;
+    }
+    .nav-drawer ul li:last-child a:hover { background: var(--red-dark); }
+
+    @media (max-width: 600px) {
+      .nav-hamburger { display: flex; }
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .nav-logo img { height: 46px; }
     }
   </style>
 </head>
@@ -935,6 +1042,23 @@
       <li><a href="#donate">Donate</a></li>
       <li><a href="resources.html">Resources</a></li>
       <li><a href="https://book2go.bike/login" target="_blank" class="nav-cta">Pilot Sign-in →</a></li>
+    </ul>
+
+    <!-- Hamburger button — mobile only -->
+    <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Mobile drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <ul>
+      <li><a href="#volunteer" class="drawer-link">Volunteer</a></li>
+      <li><a href="#rides" class="drawer-link">Request a Ride</a></li>
+      <li><a href="#hubs" class="drawer-link">Our Hubs</a></li>
+      <li><a href="#donate" class="drawer-link">Donate</a></li>
+      <li><a href="resources.html" class="drawer-link">Resources</a></li>
+      <li><a href="https://book2go.bike/login" target="_blank">Pilot Sign-in →</a></li>
     </ul>
   </div>
 </nav>
@@ -977,14 +1101,16 @@
 
 <!-- HUB STRIP -->
 <div class="hub-strip">
-  <span class="label">Our four hubs:</span>
-  <span>Central Oxford &amp; Kennington</span>
-  <span class="sep">·</span>
-  <span>Kidlington &amp; Woodstock</span>
-  <span class="sep">·</span>
-  <span>Wallingford</span>
-  <span class="sep">·</span>
-  <span>Didcot</span>
+  <div class="hub-strip-inner">
+    <span class="label">Our four hubs:</span>
+    <span class="hub-name">Central Oxford &amp; Kennington</span>
+    <span class="sep">·</span>
+    <span class="hub-name">Kidlington &amp; Woodstock</span>
+    <span class="sep">·</span>
+    <span class="hub-name">Wallingford</span>
+    <span class="sep">·</span>
+    <span class="hub-name">Didcot</span>
+  </div>
 </div>
 
 <!-- STAT BAR -->
@@ -1171,43 +1297,6 @@
             </div>
             <div class="hc-item">
               <div class="hc-label">Trishaw base</div>
-              <div class="hc-value">130 Kennington Road, OX1 5PE</div>
-            </div>
-          </div>
-          <hr class="hub-divider">
-          <div class="hub-news-label">Current activities &amp; news</div>
-          <div class="hub-news-text">
-            We're excited to be offering free rides for Spring/Summer 2026! Whether you'd like to join us for a ride or volunteer your time, we'd love to hear from you. Friendly refresher training is available for all volunteers — come be part of the fun!
-          </div>
-          <a href="mailto:fudge3484@aol.com" class="hub-cta-link">Request a ride with this hub →</a>
-        </div>
-      </div>
-
-      <!-- HUB 2 -->
-      <div class="hub-card">
-        <div class="hub-card-head c2">
-          <div>
-            <div class="hub-name">Kidlington &amp; Woodstock</div>
-            <div class="hub-area">Kidlington · Woodstock · Bladon · surrounding villages</div>
-          </div>
-          <div class="hub-num">Hub 2</div>
-        </div>
-        <div class="hub-body">
-          <div class="hub-contacts">
-            <div class="hc-item">
-              <div class="hc-label">Hub Leader</div>
-              <div class="hc-value">Dr Janet Horrocks</div>
-            </div>
-            <div class="hc-item">
-              <div class="hc-label">Phone</div>
-              <div class="hc-value"><a href="tel:+447495148513">07495 148513</a></div>
-            </div>
-            <div class="hc-item">
-              <div class="hc-label">Email</div>
-              <div class="hc-value"><a href="mailto:wallingford@cyclingwithoutage.org.uk">wallingford@cyclingwithoutage.org.uk</a></div>
-            </div>
-            <div class="hc-item">
-              <div class="hc-label">Trishaw base</div>
               <div class="hc-value">104 Grove Road, OX20 1RA</div>
             </div>
           </div>
@@ -1241,7 +1330,7 @@
             </div>
             <div class="hc-item">
               <div class="hc-label">Email</div>
-              <div class="hc-value"><a href="mailto:didcot@cyclingwithoutage.org.uk">didcot@cyclingwithoutage.org.uk</a></div>
+              <div class="hc-value"><a href="mailto:wallingford@cyclingwithoutage.org.uk">wallingford@cyclingwithoutage.org.uk</a></div>
             </div>
             <div class="hc-item">
               <div class="hc-label">Trishaw base</div>
@@ -1253,7 +1342,7 @@
           <div class="hub-news-text">
             The Wallingford Hub is getting ready for Spring/Summer 2026 with a fantastic team of volunteers and an ever-growing network of local care home partners. This year, we're especially keen to reach out to those who may be more socially isolated and help them enjoy friendly outings and connections in the community. If you or someone you know could benefit — or if you'd like to lend a hand — we'd love to hear from you.
           </div>
-          <a href="mailto:wallingford@cyclingwithoutage.org.uk" class="hub-cta-link">Request a ride with this hub →</a>
+          <a href="mailto:didcot@cyclingwithoutage.org.uk" class="hub-cta-link">Request a ride with this hub →</a>
         </div>
       </div>
 
@@ -1290,7 +1379,7 @@
           <div class="hub-news-text">
             The Didcot Hub is building momentum for an exciting Spring/Summer 2026 season! As one of our newest hubs, Didcot is growing its community of volunteers and supporters and is actively fundraising for more trishaws to help even more people get out and about. Every bit of support — from donations to volunteer time — makes a real difference. If you'd like to get involved or learn more, we'd love to hear from you!
           </div>
-          <a href="mailto:didcot@cyclingwithoutage.org.uk" class="hub-cta-link">Request a ride with this hub →</a>
+          <a href="mailto:wallingford@cyclingwithoutage.org.uk" class="hub-cta-link">Request a ride with this hub →</a>
         </div>
       </div>
     </div>
@@ -1521,8 +1610,20 @@
       <ul>
         <li><a href="resources.html">Documents &amp; downloads</a></li>
         <li><a href="mailto:kiran.audit@cyclingwithoutage.org.uk">Contact coordinator</a></li>
+        <li><a href="https://cyclingwithoutage.org.uk" target="_blank">National website</a></li>
+        <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Charity Commission</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span>&copy; 2026 Cycling Without Age Oxfordshire &mdash; <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Registered Charity 1188400</a></span>
+    <span>Website by volunteers &mdash; <a href="https://cyclingwithoutage.org.uk" target="_blank">cyclingwithoutage.org.uk</a></span>
+  </div>
+</footer>
 
 <script>
+  // ── Slideshow ──────────────────────────────────────────────
   var slides = document.querySelectorAll('.slide');
   var dots   = document.querySelectorAll('#slideDots .dot');
   var current = 0;
@@ -1537,11 +1638,30 @@
     clearInterval(timer);
     timer = setInterval(nextSlide, 5000);
   }
-
   function nextSlide() { goToSlide(current + 1); }
-
   timer = setInterval(nextSlide, 5000);
   window.goToSlide = goToSlide;
+
+  // ── Mobile nav hamburger ──────────────────────────────────
+  (function() {
+    var btn    = document.getElementById('navHamburger');
+    var drawer = document.getElementById('navDrawer');
+    if (!btn || !drawer) return;
+
+    btn.addEventListener('click', function() {
+      var isOpen = drawer.classList.toggle('open');
+      btn.classList.toggle('open', isOpen);
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+
+    drawer.querySelectorAll('.drawer-link').forEach(function(link) {
+      link.addEventListener('click', function() {
+        drawer.classList.remove('open');
+        btn.classList.remove('open');
+        btn.setAttribute('aria-expanded', false);
+      });
+    });
+  })();
 </script>
 </body>
 </html>
