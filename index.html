@@ -93,8 +93,8 @@
        TOP BAR
     ══════════════════════════════════════════ */
     .topbar {
-      background: var(--red);
-      color: rgba(255,255,255,0.9);
+      background: var(--mint);
+      color: var(--black);
       font-size: 11px;
       font-weight: bold;
       letter-spacing: 0.06em;
@@ -106,8 +106,8 @@
       flex-wrap: wrap;
       gap: 6px;
     }
-    .topbar a { color: var(--white); text-decoration: underline; }
-    .topbar a:hover { opacity: 0.8; }
+    .topbar a { color: var(--black); text-decoration: underline; }
+    .topbar a:hover { opacity: 0.7; }
 
     /* ══════════════════════════════════════════
        NAV — Dynamic dark bar with real logo
@@ -186,7 +186,7 @@
     ══════════════════════════════════════════ */
     .hero {
       background: var(--black);
-      min-height: 600px;
+      min-height: 380px;
       position: relative;
       display: flex;
       align-items: flex-end;
@@ -239,43 +239,50 @@
     }
     .dot.active { background: var(--red); }
 
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      padding: 0 32px 64px;
+    /* Slogan banner — black band between hero and hub strip */
+    .slogan-banner {
+      background: var(--black);
+      padding: 40px 0;
+      border-bottom: 3px solid var(--mint);
+    }
+    .slogan-banner-inner {
       max-width: 1080px;
       margin: 0 auto;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 48px;
+      align-items: center;
     }
-    /* Red text boxes — brand book spec */
-    .hero-slogan-box {
+    .slogan-boxes .slogan-line {
       display: inline-block;
-      background: rgba(237, 28, 36, 0.92);
-      padding: 6px 16px 6px 0;
-      margin-bottom: 6px;
+      background: var(--red);
+      padding: 4px 20px;
+      margin-bottom: 5px;
     }
-    .hero-slogan-box span {
+    .slogan-boxes .slogan-line span {
       display: block;
-      font-size: clamp(30px, 5.5vw, 56px);
+      font-size: clamp(24px, 3.8vw, 46px);
       font-weight: bold;
-      letter-spacing: 0.02em;
       text-transform: uppercase;
+      letter-spacing: 0.03em;
       color: var(--white);
       line-height: 1.1;
-      padding: 2px 20px;
     }
-    .hero-sub {
-      color: rgba(255,255,255,0.9);
-      font-size: 16px;
-      max-width: 540px;
-      margin: 22px 0 32px;
-      line-height: 1.65;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    .slogan-right p {
+      color: rgba(255,255,255,0.8);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 500px;
+      margin-bottom: 24px;
     }
     .hero-actions {
       display: flex;
       gap: 12px;
       flex-wrap: wrap;
+    }
+    @media (max-width: 700px) {
+      .slogan-banner-inner { grid-template-columns: 1fr; gap: 24px; }
     }
 
     /* Hub strip */
@@ -291,7 +298,7 @@
       font-weight: bold;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      border-top: 3px solid var(--red);
+      border-top: 3px solid var(--mint);
     }
     .hub-strip .label { color: var(--mint); flex-shrink: 0; }
     .hub-strip .sep { color: rgba(255,255,255,0.3); }
@@ -903,7 +910,7 @@
       .nav-links { display: none; }
       .request-cta-bar { flex-direction: column; }
       .topbar { justify-content: center; text-align: center; }
-      .hero { min-height: 500px; }
+      .hero { min-height: 320px; }
     }
   </style>
 </head>
@@ -948,21 +955,25 @@
     <div class="dot" onclick="goToSlide(4)"></div>
   </div>
 
-  <div class="hero-content container">
-    <div>
-      <div class="hero-slogan-box"><span>The right</span></div><br>
-      <div class="hero-slogan-box"><span>to wind</span></div><br>
-      <div class="hero-slogan-box"><span>in your hair.</span></div>
+</section>
+
+<!-- SLOGAN BANNER -->
+<div class="slogan-banner">
+  <div class="slogan-banner-inner">
+    <div class="slogan-boxes">
+      <div class="slogan-line"><span>The right</span></div><br>
+      <div class="slogan-line"><span>to wind</span></div><br>
+      <div class="slogan-line"><span>in your hair.</span></div>
     </div>
-    <p class="hero-sub">
-      Cycling Without Age Oxfordshire provides free trishaw rides to elderly, isolated, and vulnerable adults across four hubs in our county. Everyone has the right to feel the wind in their hair — whatever their age or ability.
-    </p>
-    <div class="hero-actions">
-      <a href="#rides" class="btn btn-red">Request a Ride</a>
-      <a href="#volunteer" class="btn btn-outline-white">Become a Pilot</a>
+    <div class="slogan-right">
+      <p>Cycling Without Age Oxfordshire provides free trishaw rides to elderly, isolated, and vulnerable adults across four hubs in our county. Everyone has the right to feel the wind in their hair — whatever their age or ability.</p>
+      <div class="hero-actions">
+        <a href="#rides" class="btn btn-red">Request a Ride</a>
+        <a href="#volunteer" class="btn btn-outline-white">Become a Pilot</a>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
 <!-- HUB STRIP -->
 <div class="hub-strip">
@@ -1099,9 +1110,9 @@
                 <div class="vol-step-num">2</div>
                 <div class="vol-step-text">
                   <strong>Email your local hub</strong> to confirm — Book2Go does not automatically notify us of new sign-ups.<br>
-                  Oxford &amp; Kennington / Kidlington: <a href="mailto:oxford@cyclingwithoutage.org.uk">oxford@cyclingwithoutage.org.uk</a><br>
-                  Wallingford: <a href="mailto:wallingford@cyclingwithoutage.org.uk">wallingford@cyclingwithoutage.org.uk</a><br>
-                  Didcot: <a href="mailto:didcot@cyclingwithoutage.org.uk">didcot@cyclingwithoutage.org.uk</a>
+                  Oxford &amp; Kennington / Kidlington: <a href="mailto:oxford@cyclingwithoutage.org.uk"><span class="__cf_email__" data-cfemail="c4abbca2abb6a084a7bda7a8adaaa3b3adb0acabb1b0a5a3a1eaabb6a3eab1af">[email&#160;protected]</span></a><br>
+                  Wallingford: <a href="mailto:wallingford@cyclingwithoutage.org.uk"><span class="__cf_email__" data-cfemail="c2b5a3aeaeabaca5a4adb0a682a1bba1aeabaca5b5abb6aaadb7b6a3a5a7ecadb0a5ecb7a9">[email&#160;protected]</span></a><br>
+                  Didcot: <a href="mailto:didcot@cyclingwithoutage.org.uk"><span class="__cf_email__" data-cfemail="bcd8d5d8dfd3c8fcdfc5dfd0d5d2dbcbd5c8d4d3c9c8dddbd992d3cedb92c9d7">[email&#160;protected]</span></a>
                 </div>
               </div>
             </div>
@@ -1156,7 +1167,7 @@
             </div>
             <div class="hc-item">
               <div class="hc-label">Email</div>
-              <div class="hc-value"><a href="/cdn-cgi/l/email-protection#335c4b555c415773504a505f5a5d54445a475b5c46475254561d5c41541d4658"><span class="__cf_email__" data-cfemail="d9b6a1bfb6abbd99baa0bab5b0b7beaeb0adb1b6acadb8bebcf7b6abbef7acb2">[email&#160;protected]</span></a></div>
+              <div class="hc-value"><a href="mailto:fudge3484@aol.com">fudge3484@aol.com</a></div>
             </div>
             <div class="hc-item">
               <div class="hc-label">Trishaw base</div>
@@ -1168,7 +1179,7 @@
           <div class="hub-news-text">
             We're excited to be offering free rides for Spring/Summer 2026! Whether you'd like to join us for a ride or volunteer your time, we'd love to hear from you. Friendly refresher training is available for all volunteers — come be part of the fun!
           </div>
-          <a href="/cdn-cgi/l/email-protection#36594e5059445276554f555a5f5851415f425e5943425751531859445118435d" class="hub-cta-link">Request a ride with this hub →</a>
+          <a href="mailto:fudge3484@aol.com" class="hub-cta-link">Request a ride with this hub →</a>
         </div>
       </div>
 
@@ -1185,15 +1196,15 @@
           <div class="hub-contacts">
             <div class="hc-item">
               <div class="hc-label">Hub Leader</div>
-              <div class="hc-value">Andy Pedley</div>
+              <div class="hc-value">Dr Janet Horrocks</div>
             </div>
             <div class="hc-item">
               <div class="hc-label">Phone</div>
-              <div class="hc-value"><a href="tel:+447832903531">07832 903531</a></div>
+              <div class="hc-value"><a href="tel:+447495148513">07495 148513</a></div>
             </div>
             <div class="hc-item">
               <div class="hc-label">Email</div>
-              <div class="hc-value"><a href="/cdn-cgi/l/email-protection#513e29373e2335113228323d383f36263825393e24253036347f3e23367f243a"><span class="__cf_email__" data-cfemail="503f28363f2234103329333c393e37273924383f25243137357e3f22377e253b">[email&#160;protected]</span></a></div>
+              <div class="hc-value"><a href="mailto:wallingford@cyclingwithoutage.org.uk">wallingford@cyclingwithoutage.org.uk</a></div>
             </div>
             <div class="hc-item">
               <div class="hc-label">Trishaw base</div>
@@ -1205,7 +1216,7 @@
           <div class="hub-news-text">
             We're excited to be offering free rides in the Kidlington area for Spring/Summer 2026! We're especially keen to work with local care homes and home care providers to help residents get out and about safely and comfortably. If you'd like to get involved — as a partner or a volunteer — we'd love to hear from you. Refresher training is available for all volunteers, and everyone's welcome to join in!
           </div>
-          <a href="/cdn-cgi/l/email-protection#046b7c626b766044677d67686d6a63736d706c6b71706563612a6b76632a716f" class="hub-cta-link">Request a ride with this hub →</a>
+          <a href="mailto:wallingford@cyclingwithoutage.org.uk" class="hub-cta-link">Request a ride with this hub →</a>
         </div>
       </div>
 
@@ -1230,7 +1241,7 @@
             </div>
             <div class="hc-item">
               <div class="hc-label">Email</div>
-              <div class="hc-value"><a href="/cdn-cgi/l/email-protection#93e4f2fffffafdf4f5fce1f7d3f0eaf0fffafdf4e4fae7fbfce6e7f2f4f6bdfce1f4bde6f8"><span class="__cf_email__" data-cfemail="bccbddd0d0d5d2dbdad3ced8fcdfc5dfd0d5d2dbcbd5c8d4d3c9c8dddbd992d3cedb92c9d7">[email&#160;protected]</span></a></div>
+              <div class="hc-value"><a href="mailto:didcot@cyclingwithoutage.org.uk">didcot@cyclingwithoutage.org.uk</a></div>
             </div>
             <div class="hc-item">
               <div class="hc-label">Trishaw base</div>
@@ -1242,7 +1253,7 @@
           <div class="hub-news-text">
             The Wallingford Hub is getting ready for Spring/Summer 2026 with a fantastic team of volunteers and an ever-growing network of local care home partners. This year, we're especially keen to reach out to those who may be more socially isolated and help them enjoy friendly outings and connections in the community. If you or someone you know could benefit — or if you'd like to lend a hand — we'd love to hear from you.
           </div>
-          <a href="/cdn-cgi/l/email-protection#ee998f828287808988819c8aae8d978d8287808999879a86819b9a8f898bc0819c89c09b85" class="hub-cta-link">Request a ride with this hub →</a>
+          <a href="mailto:wallingford@cyclingwithoutage.org.uk" class="hub-cta-link">Request a ride with this hub →</a>
         </div>
       </div>
 
@@ -1267,7 +1278,7 @@
             </div>
             <div class="hc-item">
               <div class="hc-label">Email</div>
-              <div class="hc-value"><a href="/cdn-cgi/l/email-protection#7f1b161b1c100b3f1c061c1316111808160b17100a0b1e181a51100d18510a14"><span class="__cf_email__" data-cfemail="1e7a777a7d716a5e7d677d7277707969776a76716b6a7f797b30716c79306b75">[email&#160;protected]</span></a></div>
+              <div class="hc-value"><a href="mailto:didcot@cyclingwithoutage.org.uk">didcot@cyclingwithoutage.org.uk</a></div>
             </div>
             <div class="hc-item">
               <div class="hc-label">Trishaw base</div>
@@ -1279,7 +1290,7 @@
           <div class="hub-news-text">
             The Didcot Hub is building momentum for an exciting Spring/Summer 2026 season! As one of our newest hubs, Didcot is growing its community of volunteers and supporters and is actively fundraising for more trishaws to help even more people get out and about. Every bit of support — from donations to volunteer time — makes a real difference. If you'd like to get involved or learn more, we'd love to hear from you!
           </div>
-          <a href="/cdn-cgi/l/email-protection#99fdf0fdfaf6edd9fae0faf5f0f7feeef0edf1f6ecedf8fefcb7f6ebfeb7ecf2" class="hub-cta-link">Request a ride with this hub →</a>
+          <a href="mailto:didcot@cyclingwithoutage.org.uk" class="hub-cta-link">Request a ride with this hub →</a>
         </div>
       </div>
     </div>
@@ -1290,7 +1301,7 @@
         <h3>Not sure which hub covers your area?</h3>
         <p>If you're unsure which hub to contact, or you'd like to speak with someone at county level, contact our county coordinator directly.</p>
       </div>
-      <a href="/cdn-cgi/l/email-protection#4c27253e2d22622d392825380c2f352f2025222b3b2538242339382d2b2962233e2b623927" class="btn btn-outline-white">
+      <a href="mailto:kiran.audit@cyclingwithoutage.org.uk" class="btn btn-outline-white">
         Email county coordinator
       </a>
     </div>
@@ -1500,7 +1511,7 @@
       <h4>Our hubs</h4>
       <ul>
         <li><a href="mailto:oxford@cyclingwithoutage.org.uk">Central Oxford &amp; Kennington</a></li>
-        <li><a href="mailto:oxford@cyclingwithoutage.org.uk">Kidlington &amp; Woodstock</a></li>
+        <li><a href="mailto:fudge3484@aol.com">Kidlington &amp; Woodstock</a></li>
         <li><a href="mailto:wallingford@cyclingwithoutage.org.uk">Wallingford</a></li>
         <li><a href="mailto:didcot@cyclingwithoutage.org.uk">Didcot</a></li>
       </ul>
@@ -1510,19 +1521,27 @@
       <ul>
         <li><a href="resources.html">Documents &amp; downloads</a></li>
         <li><a href="mailto:kiran.audit@cyclingwithoutage.org.uk">Contact coordinator</a></li>
-        <li><a href="https://cyclingwithoutage.org.uk" target="_blank">National website</a></li>
-        <li><a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Charity Commission</a></li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="footer-bottom">
-    <span>&copy; 2026 Cycling Without Age Oxfordshire &mdash;
-      Cycling Without Age Oxfordshire &middot; <a href="https://register-of-charities.charitycommission.gov.uk/charity-search/-/charity-details/5060523" target="_blank">Registered Charity 1188400</a>
-    </span>
-    <span>Website by volunteers &mdash; <a href="https://cyclingwithoutage.org.uk" target="_blank">cyclingwithoutage.org.uk</a></span>
-  </div>
-</footer>
+<script>
+  var slides = document.querySelectorAll('.slide');
+  var dots   = document.querySelectorAll('#slideDots .dot');
+  var current = 0;
+  var timer;
 
+  function goToSlide(n) {
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('active');
+    clearInterval(timer);
+    timer = setInterval(nextSlide, 5000);
+  }
+
+  function nextSlide() { goToSlide(current + 1); }
+
+  timer = setInterval(nextSlide, 5000);
+  window.goToSlide = goToSlide;
+</script>
 </body>
 </html>
